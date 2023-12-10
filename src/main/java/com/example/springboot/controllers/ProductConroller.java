@@ -9,16 +9,22 @@ import com.example.springboot.dtos.ProductRecodDto;
 import com.example.springboot.models.ProductModel;
 import com.example.springboot.repositories.ProductRepository;
 import jakarta.validation.Valid;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@CrossOrigin("*")
+@RequestMapping(value = "/api")
 @RestController
 public class ProductConroller {
 
@@ -66,6 +72,11 @@ public class ProductConroller {
           }
           productRepository.delete(product0.get());
           return ResponseEntity.status(HttpStatus.OK).body("Product deleted successfully.");
+     }
+
+     @GetMapping("/productsTotal")
+     public int getTotal() {
+          return productRepository.findAll().size();
      }
 
 }
