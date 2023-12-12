@@ -41,6 +41,16 @@ public class ProductModel implements Serializable {
           return value;
      }
 
+     private String productDescription;
+
+     public String getProductDescription() {
+          return productDescription;
+     }
+
+     public void setProductDescription(String productDescription) {
+          this.productDescription = productDescription;
+     }
+
      public void setValue(BigDecimal value) {
           this.value = value;
      }
